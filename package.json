@@ -1,0 +1,48 @@
+{
+  "name": "bambu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/preset-stage-3": "^7.0.0",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-upgrade": "0.0.23",
+    "browser-sync": "^2.24.7",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "gulp": "^3.9.1",
+    "raw-loader": "^0.5.1",
+    "webpack": "^4.18.0",
+    "webpack-serve": "^2.0.2",
+    "webpack-stream": "^5.1.1"
+  },
+  "dependencies": {
+    "firebase": "^5.4.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "styled-components": "^3.4.6"
+  }
+}
