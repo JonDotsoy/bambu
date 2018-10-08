@@ -1,4 +1,4 @@
-# Bambu
+# Bambu
 
 Sistema de relatores, para gestionar cursos de forma online.
 
