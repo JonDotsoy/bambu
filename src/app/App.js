@@ -1,39 +1,39 @@
 /* eslint global-require:off */
-const React = require('react');
-const PropTypes = require('prop-types');
-const {
+import React from 'react';
+import {
   HashRouter, Switch, Route, Redirect,
-} = require('react-router-dom');
-// const { connect } = require('react-redux');
+} from 'react-router-dom';
+import Home from '../home/Home';
+import Login from '../login/Login';
+import { app } from '../lib/firebase';
 
-const App = ({ logged }) => {
-  if (logged === false) {
+export default class App extends React.PureComponent {
+  state = {
+    authenticated: false,
+  }
+
+  auth = app.auth()
+
+  componentWillMount() {
+    this.unsubcribeStateChanged = this.auth.onAuthStateChanged((user) => {
+      this.setState({ authenticated: Boolean(user) });
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubcribeStateChanged();
+  }
+
+  render() {
+    const { authenticated } = this.state;
+
     return (
       <HashRouter>
         <Switch>
-          <Route path="/login" component={require('../login/Login')} />
-          <Route exact path="/" render={() => <Redirect to="/login" />} />
+          <Route path="/" exact component={() => (authenticated ? <Home /> : <Redirect to="/login" />)} />
+          <Route path="/login" exact component={() => (!authenticated ? <Login /> : <Redirect to="/" />)} />
         </Switch>
       </HashRouter>
     );
   }
-
-  return (
-    <HashRouter>
-      <Switch>
-        <Route path="/" exact component={require('../home/Home')} />
-        <Route path="/login" exact render={() => <Redirect to="/" />} />
-      </Switch>
-    </HashRouter>
-  );
-};
-
-App.propTypes = {
-  logged: PropTypes.bool.isRequired,
-};
-
-App.propDefault = {
-  logged: false,
-};
-
-module.exports = App;
+}

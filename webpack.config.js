@@ -3,20 +3,25 @@
 const webpack = {
   mode: process.env.NODE_ENV || 'development',
   entry: `${__dirname}/src/index.js`,
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-    ],
-  },
   output: {
     path: `${__dirname}/public/`,
     filename: 'index.js',
+  },
+  resolve: {
+    extensions: ['*', '.js'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+    ],
   },
   // externals: /node_modules/i,
   devtool: 'source-map',
